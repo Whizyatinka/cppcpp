@@ -68,7 +68,7 @@ int main() {
 
     cout << "count A: ";
     cin >> n;
-    cout << "elements A:" << endl;
+    cout << "elements A:" << " ";
     for (int i = 0; i < n; i++) {
         cin >> elem;
         setA.insert(elem);
@@ -76,7 +76,7 @@ int main() {
 
     cout << "count B: ";
     cin >> n;
-    cout << "elements B:" << endl;
+    cout << "elements B:" << " ";
     for (int i = 0; i < n; i++) {
         cin >> elem;
         setB.insert(elem);
