@@ -99,16 +99,16 @@ int main() {
                         zone = "On Red line (y = -x)";
                     }
                     else if (mathY > y1 && mathX > -3) {
-                        zone = "1";
+                        zone = "4";
                     }
                     else if (mathY < y1 && mathX > -3) {
-                        zone = "2";
+                        zone = "1";
                     }
                     else if (mathY > y1 && mathX < -3) {
-                        zone = "3";
+                        zone = "2";
                     }
                     else if (mathY < y1 && mathX < -3) {
-                        zone = "4";
+                        zone = "3";
                     }
                     else {
                         zone = "No zone";
