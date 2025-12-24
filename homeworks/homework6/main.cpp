@@ -5,7 +5,7 @@
 int main()
 {
     double x, y;
-    std::cout << "Ââåäèòå õ è ó: ";
+    std::cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ãµ Ã¨ Ã³: ";
     std::cin >> x >> y;
     double R = calculate_R(x);
     double S = calculate_S(y);
