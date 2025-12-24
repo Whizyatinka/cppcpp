@@ -1,12 +1,12 @@
 #include <Python.h>
 #include <ctime>
 
-// C-функция: суммирование элементов списка + замер времени
+// C-ГґГіГ­ГЄГ¶ГЁГї: Г±ГіГ¬Г¬ГЁГ°Г®ГўГ Г­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г±ГЇГЁГ±ГЄГ  + Г§Г Г¬ГҐГ° ГўГ°ГҐГ¬ГҐГ­ГЁ
 static PyObject* addList_add(PyObject* self, PyObject* args)
 {
     PyObject* listObj;
 
-    // Ожидаем один аргумент: список
+    // ГЋГ¦ГЁГ¤Г ГҐГ¬ Г®Г¤ГЁГ­ Г Г°ГЈГіГ¬ГҐГ­ГІ: Г±ГЇГЁГ±Г®ГЄ
     if (!PyArg_ParseTuple(args, "O", &listObj))
         return NULL;
 
@@ -14,38 +14,38 @@ static PyObject* addList_add(PyObject* self, PyObject* args)
 
     clock_t start_time = clock();
 
-    long sum = 0;  // сумма как long, чтобы не переполнялся int
+    long sum = 0;  // Г±ГіГ¬Г¬Г  ГЄГ ГЄ long, Г·ГІГ®ГЎГ» Г­ГҐ ГЇГҐГ°ГҐГЇГ®Г«Г­ГїГ«Г±Гї int
 
     for (Py_ssize_t i = 0; i < length; i++) {
         PyObject* temp = PyList_GetItem(listObj, i);
-        long elem = PyLong_AsLong(temp);  // считаем, что элементы — int
+        long elem = PyLong_AsLong(temp);  // Г±Г·ГЁГІГ ГҐГ¬, Г·ГІГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ» вЂ” int
         sum += elem;
     }
 
     clock_t end_time = clock();
     double time_taken = double(end_time - start_time) / CLOCKS_PER_SEC;
 
-    // Возвращаем кортеж (сумма, время)
+    // Г‚Г®Г§ГўГ°Г Г№Г ГҐГ¬ ГЄГ®Г°ГІГҐГ¦ (Г±ГіГ¬Г¬Г , ГўГ°ГҐГ¬Гї)
     return Py_BuildValue("(ld)", sum, time_taken);
 }
 
-// Таблица функций модуля
+// Г’Г ГЎГ«ГЁГ¶Г  ГґГіГ­ГЄГ¶ГЁГ© Г¬Г®Г¤ГіГ«Гї
 static PyMethodDef addList_funcs[] = {
     {"add", (PyCFunction)addList_add, METH_VARARGS,
      "add(list) -> (sum, time)"},
     {NULL, NULL, 0, NULL}
 };
 
-// Описание модуля
+// ГЋГЇГЁГ±Г Г­ГЁГҐ Г¬Г®Г¤ГіГ«Гї
 static struct PyModuleDef addList_module = {
     PyModuleDef_HEAD_INIT,
-    "addList",          // имя модуля (import addList)
+    "addList",          // ГЁГ¬Гї Г¬Г®Г¤ГіГ«Гї (import addList)
     "Add all the lists",
     -1,
     addList_funcs
 };
 
-// Инициализация модуля
+// Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї Г¬Г®Г¤ГіГ«Гї
 PyMODINIT_FUNC PyInit_addList(void)
 {
     return PyModule_Create(&addList_module);
